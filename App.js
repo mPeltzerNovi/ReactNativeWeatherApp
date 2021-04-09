@@ -37,6 +37,7 @@ export default function App() {
 
     }, []);
 
+    //Durbuy temp
     useEffect(() => {
         async function getLocationsDurbuyTemp() {
             try {
@@ -55,6 +56,39 @@ export default function App() {
 
     }, []);
 
+    //London
+    useEffect(() => {
+        async function getLocationsLondon() {
+            try {
+                const {data: {weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=london,gb&appid=${apiKey}&lang=nl`);
+
+                setWeatherDataLondon(weather);
+
+                console.log(weather);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        getLocationsLondon();
+
+    }, []);
+
+    //London temp
+    useEffect(() => {
+        async function getLocationsLondonTemp() {
+            try {
+                const {data: {main}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=london,gb&appid=${apiKey}&lang=nl`);
+
+                setWeatherDataLondonTemp(main);
+                console.log("Hierzo London", main);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationsLondonTemp();
+    },[]);
+
   return (
     <View style={styles.container}>
         <Text>Locatie Durbuy:</Text>
@@ -67,6 +101,20 @@ export default function App() {
         />
         <Text>
             {weatherDataDurbuyTemp.temp} <Text>F</Text>
+        </Text>
+        <Text style={styles.line}>------------------------------</Text>
+
+        <Text>Locatie London:</Text>
+
+        <FlatList
+            data={weatherDataLondon}
+            renderItem={({item }) =>{
+                return <Text>{item.description}</Text>
+            }}
+            keyExtractor={(item) => item.dt}
+        />
+        <Text>
+            {weatherDataLondonTemp.temp} <Text>F</Text>
         </Text>
         <Text style={styles.line}>------------------------------</Text>
       <StatusBar style="auto" />
