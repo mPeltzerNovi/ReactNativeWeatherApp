@@ -91,7 +91,7 @@ export default function App() {
 
     //Garmisch
     useEffect(() => {
-        async function getLocationGamisch() {
+        async function getLocationsGamisch() {
             try {
                 const {data: {weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=garmisch-partenkirchen,de&appid=${apiKey}&lang=nl`);
                 setWeatherDataGarmisch(weather);
@@ -100,12 +100,12 @@ export default function App() {
                 console.log(e);
             }
         }
-        getLocationGamisch();
+        getLocationsGamisch();
     },[]);
 
     //Garmisch temp
     useEffect(() =>{
-        async function getLocationGarmischTemp(){
+        async function getLocationsGarmischTemp(){
             try {
                 const {data: {main}} =await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=garmisch-partenkirchen,de&appid=${apiKey}&lang=nl`);
                 setWeatherDataGarmischTemp(main);
@@ -114,8 +114,65 @@ export default function App() {
                 console.log(e);
             }
         }
-        getLocationGarmischTemp();
-    })
+        getLocationsGarmischTemp();
+    },[]);
+
+    //Deauville
+    useEffect(() => {
+        async function getLocationsDeauville() {
+            try {
+                const {data: {weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=deauville,fr&appid=${apiKey}&lang=nl`);
+                setWeatherDataDeauville(weather);
+                console.log(weather);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationsDeauville();
+    },[]);
+
+    //Deauville temp
+    useEffect(() =>{
+        async function getLocationsDeauvilleTemp() {
+            try {
+                const {data: {main}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=deauville,fr&appid=${apiKey}&lang=nl`);
+                setWeatherDataDeauvilleTemp(main);
+                console.log("hierzo Deauville", main);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationsDeauvilleTemp();
+    },[]);
+
+    //Hattem
+    useEffect(() =>{
+        async function getLocationsHattem() {
+            try {
+                const {data: {weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=hattem,nl&appid=${apiKey}&lang=nl`);
+                setWeatherDataHattem(weather);
+                console.log(weather);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationsHattem();
+
+    },[]);
+
+    //Hattem temp
+    useEffect(() => {
+        async function getLocationsHattemTemp() {
+            try {
+                const {data: {main}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=hattem,nl&appid=${apiKey}&lang=nl`);
+                setWeatherDataHattemTemp(main);
+                console.log("hierzo Hattem", main);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationsHattemTemp();
+    },[]);
 
   return (
     <View style={styles.container}>
@@ -157,6 +214,34 @@ export default function App() {
         />
         <Text>
             {weatherDataGarmischTemp.temp} <Text>F</Text>
+        </Text>
+        <Text style={styles.line}>------------------------------</Text>
+
+        <Text>Locatie Deauville:</Text>
+
+        <FlatList
+            data={weatherDataDeauville}
+            renderItem={({item }) =>{
+                return <Text>{item.description}</Text>
+            }}
+            keyExtractor={(item) => item.dt}
+        />
+        <Text>
+            {weatherDataDeauvilleTemp.temp} <Text>F</Text>
+        </Text>
+        <Text style={styles.line}>------------------------------</Text>
+
+        <Text>Locatie Hattem:</Text>
+
+        <FlatList
+            data={weatherDataHattem}
+            renderItem={({item }) =>{
+                return <Text>{item.description}</Text>
+            }}
+            keyExtractor={(item) => item.dt}
+        />
+        <Text>
+            {weatherDataHattemTemp.temp} <Text>F</Text>
         </Text>
         <Text style={styles.line}>------------------------------</Text>
 
