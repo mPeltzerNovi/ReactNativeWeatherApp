@@ -12,7 +12,7 @@ export default function App() {
     const [weatherDataDeauville, setWeatherDataDeauville] = useState([]);
     const [weatherDataHattem, setWeatherDataHattem] = useState([]);
 
-    //Proberen tweede durbuy met temp te maken.
+    //Proberen tweede durbuy met temp te maken. ->Naar pressure veranderen!!!
     const [weatherDataDurbuyTemp, setWeatherDataDurbuyTemp] = useState([]);
     const [weatherDataLondonTemp, setWeatherDataLondonTemp] = useState([]);
     const [weatherDataGarmischTemp, setWeatherDataGarmischTemp] = useState([]);
@@ -182,76 +182,76 @@ export default function App() {
           <Text>Actuele weerssituatie:</Text>
 
 
-        <Text style={styles.line}>------------------------------</Text>
+        <Text style={styles.line}>-----------------------------------</Text>
 
           <Text>Locatie Durbuy:</Text>
           <FlatList
               data={weatherDataDurbuy}
               renderItem={({item }) =>{
-                  return <Text>{item.description}</Text>
+                  return <Text>Weerbeeld: {item.description}</Text>
               }}
               keyExtractor={(item) => item.dt}
           />
           <Text>
-              {weatherDataDurbuyTemp.temp} <Text>F</Text>
+              Luchtdruk: {weatherDataDurbuyTemp.pressure} <Text>Pa</Text>
           </Text>
-          <Text style={styles.line}>------------------------------</Text>
+          <Text style={styles.line}>-----------------------------------</Text>
 
         <Text>Locatie London:</Text>
 
         <FlatList
             data={weatherDataLondon}
             renderItem={({item }) =>{
-                return <Text>{item.description}</Text>
+                return <Text>Weerbeeld: {item.description}</Text>
             }}
             keyExtractor={(item) => item.dt}
         />
         <Text>
-            {weatherDataLondonTemp.temp} <Text>F</Text>
+            Luchtdruk: {weatherDataLondonTemp.pressure} <Text>Pa</Text>
         </Text>
-        <Text style={styles.line}>------------------------------</Text>
+        <Text style={styles.line}>-----------------------------------</Text>
 
         <Text>Locatie Garmisch:</Text>
 
         <FlatList
             data={weatherDataGarmisch}
             renderItem={({item }) =>{
-                return <Text>{item.description}</Text>
+                return <Text>Weerbeeld: {item.description}</Text>
             }}
             keyExtractor={(item) => item.dt}
         />
         <Text>
-            {weatherDataGarmischTemp.temp} <Text>F</Text>
+            Luchtdruk: {weatherDataGarmischTemp.pressure} <Text>Pa</Text>
         </Text>
-        <Text style={styles.line}>------------------------------</Text>
+        <Text style={styles.line}>-----------------------------------</Text>
 
         <Text>Locatie Deauville:</Text>
 
         <FlatList
             data={weatherDataDeauville}
             renderItem={({item }) =>{
-                return <Text>{item.description}</Text>
+                return <Text>Weerbeeld: {item.description}</Text>
             }}
             keyExtractor={(item) => item.dt}
         />
         <Text>
-            {weatherDataDeauvilleTemp.temp} <Text>F</Text>
+            Luchtdruk: {weatherDataDeauvilleTemp.pressure} <Text>Pa</Text>
         </Text>
-        <Text style={styles.line}>------------------------------</Text>
+        <Text style={styles.line}>-----------------------------------</Text>
 
         <Text>Locatie Hattem:</Text>
 
         <FlatList
             data={weatherDataHattem}
             renderItem={({item }) =>{
-                return <Text>{item.description}</Text>
+                return <Text>Weerbeeld: {item.description}</Text>
             }}
             keyExtractor={(item) => item.dt}
         />
         <Text>
-            {weatherDataHattemTemp.temp} <Text>F</Text>
+            Luchtdruk: {weatherDataHattemTemp.pressure} <Text>Pa</Text>
         </Text>
-        <Text style={styles.line}>------------------------------</Text>
+        <Text style={styles.line}>-----------------------------------</Text>
 
 
 
