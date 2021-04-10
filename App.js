@@ -89,6 +89,34 @@ export default function App() {
         getLocationsLondonTemp();
     },[]);
 
+    //Garmisch
+    useEffect(() => {
+        async function getLocationGamisch() {
+            try {
+                const {data: {weather}} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=garmisch-partenkirchen,de&appid=${apiKey}&lang=nl`);
+                setWeatherDataGarmisch(weather);
+                console.log(weather);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationGamisch();
+    },[]);
+
+    //Garmisch temp
+    useEffect(() =>{
+        async function getLocationGarmischTemp(){
+            try {
+                const {data: {main}} =await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=garmisch-partenkirchen,de&appid=${apiKey}&lang=nl`);
+                setWeatherDataGarmischTemp(main);
+                console.log("hierzo Garmisch", main);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getLocationGarmischTemp();
+    })
+
   return (
     <View style={styles.container}>
         <Text>Locatie Durbuy:</Text>
@@ -117,6 +145,23 @@ export default function App() {
             {weatherDataLondonTemp.temp} <Text>F</Text>
         </Text>
         <Text style={styles.line}>------------------------------</Text>
+
+        <Text>Locatie Garmisch:</Text>
+
+        <FlatList
+            data={weatherDataGarmisch}
+            renderItem={({item }) =>{
+                return <Text>{item.description}</Text>
+            }}
+            keyExtractor={(item) => item.dt}
+        />
+        <Text>
+            {weatherDataGarmischTemp.temp} <Text>F</Text>
+        </Text>
+        <Text style={styles.line}>------------------------------</Text>
+
+
+
       <StatusBar style="auto" />
     </View>
   );
