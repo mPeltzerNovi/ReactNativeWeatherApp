@@ -175,19 +175,27 @@ export default function App() {
     },[]);
 
   return (
-    <View style={styles.container}>
-        <Text>Locatie Durbuy:</Text>
-        <FlatList
-            data={weatherDataDurbuy}
-            renderItem={({item }) =>{
-                return <Text>{item.description}</Text>
-            }}
-            keyExtractor={(item) => item.dt}
-        />
-        <Text>
-            {weatherDataDurbuyTemp.temp} <Text>F</Text>
-        </Text>
+      <View>
+        <Text></Text>
+          <Text></Text>
+          <Text></Text>
+          <Text>Actuele weerssituatie:</Text>
+
+
         <Text style={styles.line}>------------------------------</Text>
+
+          <Text>Locatie Durbuy:</Text>
+          <FlatList
+              data={weatherDataDurbuy}
+              renderItem={({item }) =>{
+                  return <Text>{item.description}</Text>
+              }}
+              keyExtractor={(item) => item.dt}
+          />
+          <Text>
+              {weatherDataDurbuyTemp.temp} <Text>F</Text>
+          </Text>
+          <Text style={styles.line}>------------------------------</Text>
 
         <Text>Locatie London:</Text>
 
@@ -252,20 +260,23 @@ export default function App() {
   );
 }
 
+/*const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    line: {
+        color: '#2e81f4',
+        fontSize: 14
+    },
+
+})*/
+
 const styles = StyleSheet.create({
 
     line: {
         color: '#2e81f4',
         fontSize: 14
     },
-
-})
-
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
+});
